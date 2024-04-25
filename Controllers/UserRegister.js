@@ -4,8 +4,14 @@ const Register = require('../Models/userRegister')
 
 
 const GetRegisteredUsers = async(req,res) =>{
-    const users = await Register.findAll({})
-    res.json(users)
+    // const users = await Register.findAll({})
+    // res.json(users)
+    try{
+        const users = await Register.find({});
+        res.json(users)
+    }catch(err){
+        res.json("Internal server err" + err)
+    }
 }
 
 const downloadResume =  (req, res) => {

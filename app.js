@@ -1,8 +1,10 @@
 const express = require("express");
 
 const app = express();
-const sequelize = require("./DbConnection");
+// const sequelize = require("./DbConnection");
+const DbConnection = require('./DbConnection')
 const cors = require("cors");
+
 
 const userRegister = require("./Routes/register");
 app.use(express.json());
@@ -15,17 +17,19 @@ app.get("/", (req, res) => {
 
 app.use("/api", userRegister);
 
-async function Createconnection() {
-  try {
-    await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
-    // await User.sync({ alter: true })
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-}
-Createconnection();
+// async function Createconnection() {
+//   try {
+//     await sequelize.authenticate();
+//     await sequelize.sync({ alter: true });
+//     // await User.sync({ alter: true })
+//     console.log("Connection has been established successfully.");
+//   } catch (error) {
+//     console.error("Unable to connect to the database:", error);
+//   }
+// }
+// Createconnection();
+
+DbConnection();
 
 app.listen(3000, (err) => {
   if (err) {
