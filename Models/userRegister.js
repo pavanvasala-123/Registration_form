@@ -39,39 +39,36 @@
 //   });
 
 // module.exports = Register
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const RegisterUser = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
- dob:{
-  type:String,
-  required:true
- },
- gender:{
-  type:String,
-  required:true
+  dob: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  hobbies: {
+    type: Array,
+    allowNull: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  resume: {
+    type: String,
+  },
+});
 
- },
- hobbies:{
-  type:String,
-  allowNull:true
-
- },
- state:{
-  type:String,
-  required:true
- },
- address:{
-  type:String,
-  required:true
- },
- resume:{
-  type:String
- }
-
-})
-
-const Register = mongoose.model("Register",RegisterUser)
-module.exports = Register
+const Register = mongoose.model("Register", RegisterUser);
+module.exports = Register;
