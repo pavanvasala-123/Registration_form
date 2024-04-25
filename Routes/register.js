@@ -1,17 +1,12 @@
 const express = require("express");
-const {
-  GetRegisteredUsers,
-  downloadResume,
-} = require("../Controllers/UserRegister");
+const {GetRegisteredUsers,downloadResume} = require("../Controllers/UserRegister");
 const multer = require("multer");
 const path = require("path");
 const Register = require("../Models/userRegister");
 
 const router = express.Router();
 
-router
-  .get("/getusers", GetRegisteredUsers)
-  .get("/download/:filename", downloadResume);
+router.get("/getusers", GetRegisteredUsers).get("/download/:filename", downloadResume);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
